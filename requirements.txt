@@ -71,12 +71,8 @@ pycodestyle==2.6.0
 pycparser==2.21
 PyGetWindow==0.0.9
 Pygments==2.9.0
-pyinstaller==4.3
-pyinstaller-hooks-contrib==2021.1
-pylint==2.6.0
 PyMsgBox==1.0.9
 pyparsing==2.4.7
-pyperclip==1.8.2
 pypiwin32==223
 PyRect==0.1.4
 pyrsistent==0.18.1
