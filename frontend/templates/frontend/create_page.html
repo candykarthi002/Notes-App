@@ -1,0 +1,19 @@
+{% extends './base.html' %}
+
+{% load static %}
+
+{% block title %}Notes App - Create Notes{% endblock %}
+{% block content %}
+<div class="create-navbar">
+	<a class="home" href="/">
+		<!-- <img src="{% static 'frontend/home-colored.png' %}" alt="home"> -->
+	</a>
+	<span>Create Notes</span>
+</div>
+<form method="post">
+	{% csrf_token %}
+	<input type="text" placeholder="Enter Title" name="title">
+	<textarea name="text" id="text" name="text" placeholder="Start from here"></textarea>
+	<input type="submit" value="Save">
+</form>
+{% endblock %}

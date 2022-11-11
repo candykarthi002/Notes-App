@@ -1,0 +1,72 @@
+{% extends './base.html' %}
+{% load static %}
+{% block title %}Notes App - Home{% endblock %}
+
+{% block content %}
+<div class="loader">
+        <div class="circle1"></div>
+        <div class="circle2">Organizing<span>●</span><span>●</span><span>●</span></div>
+    </div>
+<div class="navbar">
+	<span>Notes App</span>
+	<ul>
+		<li><a href="/create-page">Create Notes</a></li>
+		<li><a href="#favourites">Favourites</a></li>
+		<li><a href="/logout">Logout</a></li>
+	</ul>
+</div>
+<div class="main-container">
+	<section id="recent">
+	<h1>Recent Notes</h1>
+	<div class="recent-notes">
+		{% if notes|length > 0 %}
+			{% for n in notes %}
+			<div class="notes">
+				<a class="title" href="/edit/{{ n.id }}">{{ n.name }}</a>
+				{% if n.favourite %}
+				<a href="/favourite/{{ n.id }}" class="fav">
+				<img src="{% static 'frontend/favourite-filled.png' %}" alt="fav">
+				</a>
+				{% else %}
+				<a href="/favourite/{{ n.id }}" class="fav">
+				<img src="{% static 'frontend/favourite.png' %}" alt="fav">
+				</a>
+				{% endif %}
+				<p>{{ n.text }}</p>
+				<span>{{ n.created_at }}</span>
+			</div>
+			{% endfor %}
+		{% else %}
+			<h2>No Recent Notes</h2>
+		{% endif %}
+	</div>
+	</section>
+	<section id="favourites">
+	<h1>Favourite Notes</h1>
+	<div class="fav-notes">
+		{% if fav_notes|length > 0 %}
+			{% for n in fav_notes %}
+				{% if n.favourite %}
+					<div class="notes">
+						<a class="title" href="/edit/{{ n.id }}">{{ n.name }}</a>
+						{% if n.favourite %}
+						<a href="/favourite/{{ n.id }}" class="fav">
+						<img src="{% static 'frontend/favourite-filled.png' %}" alt="fav">
+						</a>
+						{% else %}
+						<a href="/favourite/{{ n.id }}" class="fav">
+						<img src="{% static 'frontend/favourite.png' %}" alt="fav">
+						</a>
+						{% endif %}
+						<p>{{ n.text }}</p>
+						<span>{{ n.created_at }}</span>
+					</div>
+				{% endif %}
+			{% endfor %}
+		{% else %}
+			<h2>No Favourite Notes</h2>
+		{% endif %}
+	</div>
+	</section>
+</div>
+{% endblock %}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% block title %}Notes App{% endblock %}</title>
+	<link rel="stylesheet" href="{% static 'frontend/style.css' %}">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+	{% if messages %}
+		<ul class="messages">
+		    {% for message in messages %}
+		    {% if message.level|add:'0' == 25 %}
+		    <li  class="success" onclick="this.style.opacity=0;this.style.display='none';">
+		    	{{ message }}
+		    </li>
+		    {% else %}
+		    <li  class="error" onclick="this.style.opacity=0;this.style.display='none';">
+		    	{{ message }}
+		    </li>
+		    {% endif %}
+		    {% endfor %}
+		</ul>
+	{% endif %}
+	{% block content %}
+	<h1>Notes, App</h1>
+	{% endblock %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            const loader = document.querySelector('.loader');
+            console.log('loading');
+            setTimeout(() => {
+                console.log('Page Loaded!');
+                loader.style.display = 'none';
+            }, 100)
+        })
+        const inp = document.querySelectorAll('#signup-input');
+        inp.forEach(i => {
+        	// console.log("index: " + i.previousElementSibling.innerText);
+        	i.addEventListener('focusin', () => {
+        		i.previousElementSibling.style.margin = '-10px';
+        		i.previousElementSibling.style.paddingLeft = '10px';
+        		i.previousElementSibling.style.paddingRight = '10px';
+	        	i.previousElementSibling.style.width = 'max-content';
+	        	i.previousElementSibling.style.height = 'fit-content';
+	        	i.previousElementSibling.style.backgroundColor = '#F9FBFF';
+	        	i.previousElementSibling.style.fontSize = '24px';
+	        	i.previousElementSibling.style.top = '12px';
+	        	i.previousElementSibling.style.left = '-195px';
+        	})
+        	i.addEventListener('focusout', () => {
+        		if (i.value == "") {
+	        		i.previousElementSibling.style.margin = '0px';
+	        		i.previousElementSibling.style.paddingLeft = '0px';
+	        		i.previousElementSibling.style.paddingRight = '0px';
+		        	i.previousElementSibling.style.width = '50vw';
+		        	i.previousElementSibling.style.height = '10px';
+		        	i.previousElementSibling.style.backgroundColor = 'transparent';
+		        	i.previousElementSibling.style.fontSize = '24px';
+		        	i.previousElementSibling.style.top = '40px';
+		        	i.previousElementSibling.style.left = '40px';
+        		}
+        	})
+        })
+        console.log(inp)
+    </script>
+</body>
+</html>
