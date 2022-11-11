@@ -73,7 +73,6 @@ PyGetWindow==0.0.9
 Pygments==2.9.0
 PyMsgBox==1.0.9
 pyparsing==2.4.7
-pypiwin32==223
 PyRect==0.1.4
 pyrsistent==0.18.1
 PyScreeze==0.1.27
