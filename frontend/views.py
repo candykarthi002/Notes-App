@@ -25,7 +25,6 @@ def create_page(request):
 	if request.method == "POST":
 		t = request.POST.get("title")
 		if t:
-			print(t)
 			content = request.POST.get("text")
 			if content:
 				current_user = request.user
@@ -40,7 +39,6 @@ def edit_notes(request, id):
 	if request.method == "POST":
 		t = request.POST.get("title")
 		if t:
-			print(t)
 			content = request.POST.get("text")
 			if content:
 				notes_for_update = Notes.objects.filter(id=id).first()
@@ -51,7 +49,6 @@ def edit_notes(request, id):
 				messages.add_message(request, messages.SUCCESS, "Changes Saved!")
 				return HttpResponseRedirect("/")
 	filtered_notes = Notes.objects.filter(id=id).first()
-	print(filtered_notes.id)
 	return render(request, 'frontend/edit_page.html', {"notes": filtered_notes})
 
 @login_required(login_url="/login")
@@ -108,7 +105,6 @@ def login_user(request):
 		password = request.POST.get('password')
 		username = User.objects.filter(email=email).first()
 		user = authenticate(request, username=username, password=password)
-		print(user)
 		if user is not None:
 			login(request, user)
 			messages.add_message(request, messages.SUCCESS, "User Logged In!")
