@@ -25,7 +25,7 @@ SECRET_KEY = 'd2f428e076d1e9334f03dc7cf0fde2ae11b7d6522ec480c7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['notesapp1-0.herokuapp.com']
+ALLOWED_HOSTS = ['notesapp1-0.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'frontend.apps.FrontendConfig',
-    'backend.apps.BackendConfig',
 ]
 
 MIDDLEWARE = [

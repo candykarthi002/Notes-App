@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from backend.models import Notes
+from .models import Notes
 from django.core.validators import validate_email
 from django.contrib.auth.decorators import login_required
 import datetime
