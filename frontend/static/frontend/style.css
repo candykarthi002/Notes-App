@@ -17,11 +17,14 @@ body {
 }
 
 .navbar, .create-navbar, .edit-navbar {
+	position: sticky;
+	top: 0;
 	height: 12.5vh;
 	background-color: var(--paper-color);
 	align-items: center;
 	border-radius: 0 0 20px 20px;
 	box-shadow: 1px 1px 5px rgba(0, 0, 0, 1.0);
+	z-index: 100;
 }
 
 .navbar, .edit-navbar {
@@ -30,7 +33,7 @@ body {
 	justify-content: space-between;
 }
 
-.create-navbar a {
+.create-navbar a, .edit-navbar .home {
 	position: static;
 	display: inline-block;
 	width: 32px;
@@ -42,11 +45,16 @@ body {
 	transition: all .2s ease-in;
 }
 
-.create-navbar a:hover {
+.edit-navbar .home {
+	margin-top: 10px;
+	margin-right: -52.5%;
+}
+
+/*.create-navbar a:hover {
 	background: url('/static/frontend/home-colored.png') no-repeat;
 	background-size: 32px;
 	transform: scale(2);
-}
+}*/
 
 .navbar span, .create-navbar span, .edit-navbar span {
 	position: relative;
@@ -295,12 +303,20 @@ h2 {
 .edit-navbar a {
 	position: fixed;
 	right: 50px;
+	padding: 5px 10px;
 	font-size: 25px;
 	text-decoration: none;
 	color: red;
+	border-radius: 10px;
+	transition: all 250ms ease-in;
 }
 
-.home {
+.edit-navbar a:hover {
+	color: var(--paper-color);
+	background: rgba(255, 0, 0, 0.75);
+}
+
+/*.home{
 	position: absolute;
 	display: inline-block;
 	width: 32px;
@@ -309,13 +325,14 @@ h2 {
 	background: url('/static/frontend/home.png') no-repeat;
 	background-size: 32px;
 	transform: scale(1.25);
-	transition: all .2s ease-in;
-}
+	transition: all .2s ease-in-out;
+	z-index: 110;
+}*/
 
-.home:hover {
+.edit-navbar .home:hover, .create-navbar > .home:hover {
 	background: url('/static/frontend/home-colored.png') no-repeat;
 	background-size: 32px;
-	transform: scale(1.75);
+	transform: scale(1.5);
 }
 
 .loader {
@@ -327,7 +344,7 @@ h2 {
 	justify-content: center;
 	align-items: center;
 	background: var(--paper-color);
-	z-index: 100;
+	z-index: 1000;
 }
 .circle1 {
 	position: absolute;
@@ -417,15 +434,15 @@ h2 {
 
 .messages {
 	display: block;
-	position: absolute;
+	position: sticky;
 	bottom: 25px;
-	margin: 0;
 	list-style-type: none;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	/*align-items: center;*/
 	text-align: left;
+	z-index: 10;
 }
 
 .messages li {
@@ -442,7 +459,11 @@ h2 {
 	/*text-shadow: 1px 1px 2px rgba(0, 255, 0, 0.4);*/
 	box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.8);
 	opacity: 1;
-	transition: all 800ms forwards cubic-bezier(0,-0.02,1,.45);
+	transition: all 100ms cubic-bezier(0,-0.02,1,.45);
+}
+
+.messages li:hover {
+	transform: scale(1.025);
 }
 
 .error {
@@ -459,6 +480,10 @@ h2 {
 	padding-bottom: 60px;
 	text-align: left;
 	overflow: hidden;
+}
+
+#login {
+	margin-bottom: 135px;
 }
 
 #signup h1, #login h1 {
@@ -522,4 +547,32 @@ form p {
 form p a {
 	text-decoration: none;
 	color: darkcyan;
+}
+
+form #save-btn {
+	width: fit-content;
+	height: fit-content;
+	padding: 10px 20px;
+	text-align: center;
+	cursor: url('/static/frontend/pen2-7-hover.png'), auto;
+	transition: all 250ms ease-in-out;
+	border-radius: 7px;
+}
+
+form #save-btn:hover {
+	border-color: var(--bg-color);
+	background: var(--bg-color);
+	color: var(--paper-color);
+}
+
+.copyrights p {
+	position: sticky;
+	bottom: 0;
+	width: 100%;
+	height: max-content;
+	margin: 5px 0 0 0;
+	padding: 5px 0;
+	text-align: center;
+	font-weight: bold;
+	background: var(--paper-color);
 }

@@ -11,6 +11,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+	{% block content %}
+	<h1>Notes, App</h1>
+	{% endblock %}
 	{% if messages %}
 		<ul class="messages">
 		    {% for message in messages %}
@@ -26,9 +29,9 @@
 		    {% endfor %}
 		</ul>
 	{% endif %}
-	{% block content %}
-	<h1>Notes, App</h1>
-	{% endblock %}
+	<div class="copyrights">
+		<p>Copyrights &#169; 2022. All rights Reserved by Karthik.</p>
+	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         window.addEventListener('load', () => {

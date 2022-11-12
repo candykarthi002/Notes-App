@@ -12,8 +12,8 @@
 </div>
 <form method="post">
 	{% csrf_token %}
-	<input type="text" placeholder="Enter Title" name="title">
-	<textarea name="text" id="text" name="text" placeholder="Start from here"></textarea>
-	<input type="submit" value="Save">
+	<input type="text" placeholder="Enter Title" name="title" required>
+	<textarea name="text" id="text" name="text" placeholder="Start from here" required></textarea>
+	<input id="save-btn" type="submit" value="Save">
 </form>
 {% endblock %}

@@ -2,16 +2,16 @@
 
 {% block title %}Notes App - Edit Notes{% endblock %}
 {% block content %}
-<a class="home" href="/"></a>
 <div class="edit-navbar">
+	<a class="home" href="/"></a>
 	<span>Edit Notes</span>
 	<small>Last saved at {{ notes.created_at }}</small>
 	<a href="/delete/{{ notes.id }}">Delete</a>
 </div>
 <form method="post">
 	{% csrf_token %}
-	<input type="text" placeholder="Enter Title" name="title" value="{{ notes.name }}">
-	<textarea name="text" id="text" name="text" placeholder="Start from here">{{ notes.text }}</textarea>
-	<input type="submit" value="Save">
+	<input type="text" placeholder="Enter Title" name="title" value="{{ notes.name }}" required>
+	<textarea name="text" id="text" name="text" placeholder="Start from here" required>{{ notes.text }}</textarea>
+	<input id="save-btn" type="submit" value="Save">
 </form>
 {% endblock %}
