@@ -9,3 +9,6 @@ class Notes(models.Model):
 	text = models.TextField(blank=False)
 	favourite = models.BooleanField(default=False)
 	created_at = models.DateTimeField(auto_now_add=True)
+
+	def __str__(self):
+		return self.name
