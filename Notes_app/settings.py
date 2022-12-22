@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-import django_heroku
 import os
 from pathlib import Path
 
@@ -26,7 +25,7 @@ SECRET_KEY = 'd2f428e076d1e9334f03dc7cf0fde2ae11b7d6522ec480c7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['notesapp1-0.herokuapp.com']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -124,5 +123,3 @@ STATIC_URL = '/static/'
 
 LOGIN_URL = 'login/'
 LOGIN_REDIRECT_URL = 'login/'
-
-django_heroku.settings(locals())
